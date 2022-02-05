@@ -1,4 +1,5 @@
 import Contact from "../components/contact"
+import ContactForm from "../components/contactForm";
 import { mockResponse } from "../utils/mockResponse";
 
 const Main = () => {
@@ -14,6 +15,7 @@ const Main = () => {
 
   return(
     <>
+      <ContactForm />
       <ul>{contacts}</ul>
     </>
     
