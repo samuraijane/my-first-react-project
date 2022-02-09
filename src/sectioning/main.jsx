@@ -9,9 +9,8 @@ const Main = () => {
   const [fields, setFields] = useState();
 
   const handleSubmit = (e, contactFields) => {
-    console.log(contactFields);
-    // e.preventDefault();
-    // setFields(name);
+    e.preventDefault();
+    setFields(contactFields);
   };
 
   const contacts = response.map((contact, index) => {
@@ -25,8 +24,10 @@ const Main = () => {
 
   return(
     <>
+      <ul>
+        {fields && <Contact contact={fields} />}
+      </ul>
       <ContactForm action={handleSubmit} />
-      <p>{fields}</p>
       <ul>{contacts}</ul>
     </>
     
