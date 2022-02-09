@@ -8,9 +8,10 @@ const Main = () => {
 
   const [fields, setFields] = useState();
 
-  const handleSubmit = (e, name) => {
-    e.preventDefault();
-    setFields(name);
+  const handleSubmit = (e, contactFields) => {
+    console.log(contactFields);
+    // e.preventDefault();
+    // setFields(name);
   };
 
   const contacts = response.map((contact, index) => {
