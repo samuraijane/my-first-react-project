@@ -1,6 +1,6 @@
 const Modal = ({ message }) => {
   return (
-    <div>{message}</div>
+    <div className="modal">{message}</div>
   )
 };
 
