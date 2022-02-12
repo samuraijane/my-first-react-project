@@ -10,7 +10,7 @@ import ContactSummary from '../components/contactSummary';
 const Main = () => {
   const [fields, setFields] = useState([]);
   const [isShowModal, setIsShowModal] = useState(false);
-  const [selectedContact, setSelectedContact] =useState(null)
+  const [selectedContact, setSelectedContact] = useState(null);
 
   useEffect(() => {
     setFields(mockResponse());
@@ -27,7 +27,7 @@ const Main = () => {
     const selectedContact = fields.filter(field => {
       return field.id === targetId;
     });
-    setSelectedContact(selectedContact);
+    setSelectedContact(selectedContact[0]);
   };
 
   const handleIsShowModal = () => {
@@ -40,7 +40,8 @@ const Main = () => {
         <Route path="/" element={<h1>Welcome to the Contact App</h1>} />
         <Route path="add" element={<ContactForm action={handleSubmit} />} />
         <Route path="list" element={<ContactSummary action={handleClick} fields={fields} />}>
-          <Route path=":id" element={<ContactDetail selectedContact={selectedContact[0]} />} /> 
+          {/* this change below removes the error we get if we refresh the page with an ID in the URL - because when we do that, that ID no longer exists */}
+          {selectedContact && <Route path=":id" element={<ContactDetail selectedContact={selectedContact} />} />} 
         </Route>
         <Route path="*" element={<h1>Page not found</h1>} />
       </Routes>

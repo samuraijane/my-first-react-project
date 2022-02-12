@@ -1,4 +1,5 @@
 import faker from "@faker-js/faker";
+import testUtils from "react-dom/test-utils";
 
 export const mockResponse = () => {
   let response = [];
