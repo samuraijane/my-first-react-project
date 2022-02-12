@@ -1,6 +1,6 @@
-const ContactDetail = ({ contact }) => {
-  const {name, address, city, state, zipcode, phone, email, job} = contact;
-
+const ContactDetail = ({ selectedContact }) => {
+  const {name, address, city, state, zipcode, phone, email, job} = selectedContact;
+console.log('assssssss', selectedContact)
   return (
     <li>
       <h2>{name}</h2>

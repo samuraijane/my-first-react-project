@@ -10,6 +10,7 @@ import ContactSummary from '../components/contactSummary';
 const Main = () => {
   const [fields, setFields] = useState([]);
   const [isShowModal, setIsShowModal] = useState(false);
+  const [selectedContact, setSelectedContact] =useState(null)
 
   useEffect(() => {
     setFields(mockResponse());
@@ -21,6 +22,14 @@ const Main = () => {
     setIsShowModal(true);
   };
 
+  const handleClick = e => {
+    const targetId = e.target.id;
+    const selectedContact = fields.filter(field => {
+      return field.id === targetId;
+    });
+    setSelectedContact(selectedContact);
+  };
+
   const handleIsShowModal = () => {
     setIsShowModal(!isShowModal);
   }
@@ -30,8 +39,8 @@ const Main = () => {
       <Routes>
         <Route path="/" element={<h1>Welcome to the Contact App</h1>} />
         <Route path="add" element={<ContactForm action={handleSubmit} />} />
-        <Route path="list" element={<ContactSummary fields={fields} />}>
-          <Route path=":id" element={<ContactDetail />} /> 
+        <Route path="list" element={<ContactSummary action={handleClick} fields={fields} />}>
+          <Route path=":id" element={<ContactDetail selectedContact={selectedContact[0]} />} /> 
         </Route>
         <Route path="*" element={<h1>Page not found</h1>} />
       </Routes>
