@@ -1,6 +1,6 @@
 import faker from "@faker-js/faker";
 
-export const mockResponse = () => {
+export default function mockResponse() {
   let response = [];
   for (let i = 0; i < 10; i++) {
     const contact = {};

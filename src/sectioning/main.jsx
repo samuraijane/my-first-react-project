@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import Contact from "../components/contact";
+import ContactDetail from '../components/contactDetail';
+import ContactSummary from "../components/contactSummary";
 import ContactForm from "../components/contactForm";
-import { mockResponse } from "../utils/mockResponse";
+import { mockResponse } from "../utils";
 import Modal from '../components/modal';
-import { Route, Routes } from 'react-router-dom';
+import { Outlet, Route, Routes } from 'react-router-dom';
 
 
 const Main = () => {
@@ -20,20 +21,26 @@ const Main = () => {
     setIsShowModal(true);
   };
 
-  const contacts = fields.map((contact, index) => {
-   return <Contact contact={contact} key={index} />;
-  });
-        
+  const handleModal = () => {
+    setIsShowModal(!isShowModal);
+  };
+  
+  const handleSelectedContact = e => {
+    const id = e.target.id;
+    // const selectedContact = fields.filter(x => x.)
+  };
 
   return(
     <>
       <Routes>
         <Route path="/" element={<h1>Welcome to the Contact App</h1>} />
         <Route path="add" element={<ContactForm action={handleSubmit} />} />
-        <Route path="list" element={<ul>{contacts}</ul>} />
+        <Route path="list" element={<ContactSummary action={handleSelectedContact} fields={fields} />}>
+          <Route path=":id" element={<ContactDetail selectedContact='{}' />} />
+        </Route>
         <Route path="*" element={<h1>Page not found</h1>} />
       </Routes>
-      {isShowModal && <Modal message="Contact added" />}
+      {isShowModal && <Modal action={handleModal} message="Contact added" />}
     </>
   )
 }
