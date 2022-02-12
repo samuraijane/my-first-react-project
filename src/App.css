@@ -29,6 +29,7 @@ ul {
 .modal {
   background-color: cornsilk;
   border: 1px solid black;
+  cursor: pointer;
   left: 50%;
   padding: 40px 0;
   position: absolute;

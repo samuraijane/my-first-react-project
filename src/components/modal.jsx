@@ -1,6 +1,6 @@
-const Modal = ({ message }) => {
+const Modal = ({ action, message }) => {
   return (
-    <div className="modal">{message}</div>
+    <div className="modal" onClick={action}>{message}</div>
   )
 };
 

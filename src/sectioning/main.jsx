@@ -20,6 +20,10 @@ const Main = () => {
     setIsShowModal(true);
   };
 
+  const handleIsShowModal = () => {
+    setIsShowModal(!isShowModal);
+  }
+
   const contacts = fields.map((contact, index) => {
    return <Contact contact={contact} key={index} />;
   });
@@ -33,7 +37,7 @@ const Main = () => {
         <Route path="list" element={<ul>{contacts}</ul>} />
         <Route path="*" element={<h1>Page not found</h1>} />
       </Routes>
-      {isShowModal && <Modal message="Contact added" />}
+      {isShowModal && <Modal action={handleIsShowModal} message="Contact added" />}
     </>
   )
 }
