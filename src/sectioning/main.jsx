@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Contact from "../components/contact";
+import ContactDetail from "../components/contactDetail";
 import ContactForm from "../components/contactForm";
 import { mockResponse } from "../utils/mockResponse";
 import Modal from '../components/modal';
@@ -30,7 +30,9 @@ const Main = () => {
       <Routes>
         <Route path="/" element={<h1>Welcome to the Contact App</h1>} />
         <Route path="add" element={<ContactForm action={handleSubmit} />} />
-        <Route path="list" element={<ContactSummary fields={fields} />} />
+        <Route path="list" element={<ContactSummary fields={fields} />}>
+          <Route path=":id" element={<ContactDetail />} /> 
+        </Route>
         <Route path="*" element={<h1>Page not found</h1>} />
       </Routes>
       {isShowModal && <Modal action={handleIsShowModal} message="Contact added" />}

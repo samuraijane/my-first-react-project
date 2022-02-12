@@ -38,3 +38,7 @@ ul {
   transform: translate(-50%, -50%);
   width: 50%;
 }
+
+.contacts li {
+  cursor: pointer;
+}

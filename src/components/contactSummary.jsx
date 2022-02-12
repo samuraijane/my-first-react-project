@@ -1,18 +1,22 @@
-import Contact from "./contact";
+import { NavLink } from "react-router-dom";
 
 const ContactSummary = ({fields}) => {
 
   const handleClick = e => {
-    const target = e.target;
+    const target = e.target.id;
     console.log(target);
-  }
+  };
 
-  const contacts = fields.map((contact, index) => {
-    return <li key={index}>{contact.name}</li>;
+  const contacts = fields.map(contact => {
+    return (
+      <li id={contact.id} key={contact.id}>
+        <NavLink to={contact.id}>{contact.name}</NavLink>
+      </li>
+    );
    });
 
   return (
-    <ul onClick={handleClick}>{contacts}</ul>
+    <ul className="contacts" onClick={handleClick}>{contacts}</ul>
   );
 };
 
