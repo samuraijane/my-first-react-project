@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -22,6 +23,8 @@ body {
 
 header {
   background-color: cornflowerblue;
+  margin-bottom: 20px;
+  padding: 20px 0;
 }
 
 main {
@@ -30,6 +33,7 @@ main {
 
 footer {
   background-color: cornflowerblue;
+  padding: 30px 0;
   flex-shrink: 0;
 }
 
@@ -52,4 +56,16 @@ ul {
 
 .contacts li {
   cursor: pointer;
+}
+
+.navs {
+  display: flex;
+}
+
+.navs--justify {
+  justify-content: space-between;
+}
+
+.navs--items li {
+  margin-left: 14px;
 }
