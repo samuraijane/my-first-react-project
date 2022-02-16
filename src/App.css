@@ -1,12 +1,23 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html,
 body {
   height: 100%;
 }
 
 .y-wrap {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.y-sticky {
   display: flex;
   flex-direction: column;
-  min-height: 96vh;
+  height: 100%;
 }
 
 header {

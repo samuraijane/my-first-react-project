@@ -44,18 +44,20 @@ const Main = () => {
   };
 
   return(
-    <>
-      <Routes>
-        <Route path="/" element={<h1>Welcome to the Contact App</h1>} />
-        <Route path="add" element={<ContactForm action={handleSubmit} />} />
-        <Route path="list" element={<ContactSummary action={handleClick} fields={fields} />}>
-          {/* this change below removes the error we get if we refresh the page with an ID in the URL - because when we do that, that ID no longer exists */}
-          {selectedContact && <Route path=":id" element={<ContactDetail action={handleDelete} selectedContact={selectedContact} />} />} 
-        </Route>
-        <Route path="*" element={<h1>Page not found</h1>} />
-      </Routes>
-      {isShowModal && <Modal action={handleIsShowModal} message="Contact added" />}
-    </>
+    <main>
+      <div className="y-wrap">
+        <Routes>
+          <Route path="/" element={<h1>Welcome to the Contact App</h1>} />
+          <Route path="add" element={<ContactForm action={handleSubmit} />} />
+          <Route path="list" element={<ContactSummary action={handleClick} fields={fields} />}>
+            {/* this change below removes the error we get if we refresh the page with an ID in the URL - because when we do that, that ID no longer exists */}
+            {selectedContact && <Route path=":id" element={<ContactDetail action={handleDelete} selectedContact={selectedContact} />} />} 
+          </Route>
+          <Route path="*" element={<h1>Page not found</h1>} />
+        </Routes>
+        {isShowModal && <Modal action={handleIsShowModal} message="Contact added" />}
+      </div>
+    </main>
   )
 }
 
