@@ -69,3 +69,20 @@ ul {
 .navs--items li {
   margin-left: 14px;
 }
+
+.contact-field {
+  margin: 16px 0;
+}
+
+.contact-field span {
+  display: inline-block;
+  min-width: 100px;
+}
+
+.btn {
+  background-color: crimson;
+  border: none;
+  color: white;
+  margin-top: 26px;
+  padding: 10px 18px;
+}
