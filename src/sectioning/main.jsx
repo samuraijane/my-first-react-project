@@ -5,11 +5,11 @@ import { mockResponse } from "../utils/mockResponse";
 import Modal from '../components/modal';
 import { Route, Routes } from 'react-router-dom';
 import ContactSummary from '../components/contactSummary';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const Main = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [fields, setFields] = useState([]);
   const [isShowModal, setIsShowModal] = useState(false);
   const [selectedContact, setSelectedContact] = useState(null);
@@ -40,7 +40,7 @@ const Main = () => {
     const updatedContacts = fields.filter(field => field.id !== id);
     setFields(updatedContacts);
     setSelectedContact(null);
-    history.push('/list')
+    navigate('/list');
   };
 
   return(
