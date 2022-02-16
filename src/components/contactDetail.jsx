@@ -1,5 +1,5 @@
-const ContactDetail = ({ selectedContact }) => {
-  const {name, address, city, state, zipcode, phone, email, job} = selectedContact;
+const ContactDetail = ({ action, selectedContact }) => {
+  const {id, name, address, city, state, zipcode, phone, email, job} = selectedContact;
 
   return (
     <li>
@@ -10,6 +10,7 @@ const ContactDetail = ({ selectedContact }) => {
       <p>{phone}</p>
       <p>{email}</p>
       <p>{job}</p>
+      <button onClick={() => action(id)}>Delete Contact</button>
     </li>
   );
 }
