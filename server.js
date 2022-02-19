@@ -11,7 +11,6 @@ const geocoder = new Geocodio(API_KEY);
 const server = express();
 
 
-
 server.get('/heartbeat', (req, res) => {
   geocoder
   .geocode('123 Main Street, Springfield, OR')
