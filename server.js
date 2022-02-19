@@ -2,6 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const Geocodio = require('geocodio-library-node');
+const path = require('path');
 
 // env vars
 const { API_KEY, PORT } = process.env;
@@ -10,15 +11,21 @@ const { API_KEY, PORT } = process.env;
 const geocoder = new Geocodio(API_KEY);
 const server = express();
 
+// server-wide middleware
+server.use(express.static(path.resolve(__dirname + '/react-ui/build')));
+server.use(express.json());
 
 server.get('/heartbeat', (req, res) => {
-  geocoder
-  .geocode('123 Main Street, Springfield, OR')
-  .then(response => {
-    res.json({
-      "response": response
-    })
+  res.json({
+    "is": "working"
   })
+});
+
+server.post('/location', (req, res) => {
+  const { location } = req.body;
+  geocoder
+  .geocode(location)
+  .then(response => res.json({response}))
 });
 
 // catch-all so react can handle routing
